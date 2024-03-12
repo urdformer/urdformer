@@ -8,7 +8,7 @@
 [Alan Wu](https://www.linkedin.com/in/alan-wu-501a93202/),
 [Dieter Fox*](https://homes.cs.washington.edu/~fox/),  [Abhishek Gupta*](https://abhishekunique.github.io/) 
 
-[website](https://urdformer.github.io/), [paper] (https://drive.google.com/file/d/1vXcBgf--ySQWeh3VFIiigAV8_cZi_Kzv/view?usp=sharing)
+[website](https://urdformer.github.io/), [paper](https://drive.google.com/file/d/1vXcBgf--ySQWeh3VFIiigAV8_cZi_Kzv/view?usp=sharing)
 
 
 URDFormer a scalable pipeline towards large-scale simulation generation from real-world images. Given an image (internet or captured from a phone),
