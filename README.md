@@ -10,10 +10,12 @@
 
 [website](https://urdformer.github.io/), [paper](https://drive.google.com/file/d/1vXcBgf--ySQWeh3VFIiigAV8_cZi_Kzv/view?usp=sharing)
 
+URDFormer represents a pipeline for large-scale simulation generation from real-world images. 
+Given an image, whether sourced from the internet or captured with a phone, 
+URDFormer predicts its corresponding interactive 'digital twin' in the URDF format. 
+This URDF can then be loaded into a simulator to train robots for various tasks. 
+For more details and visualizations, please visit our [website](https://urdformer.github.io/).
 
-URDFormer a scalable pipeline towards large-scale simulation generation from real-world images. Given an image (internet or captured from a phone),
-URDFormer predicts its corresponding interactive "digital twin" in the format of a URDF. This URDF can be loaded into a simulator to train a robot for different tasks.
-Please check out our [website](https://urdformer.github.io/) for more details and visualizations. 
 
 ![](media/teaser_final.gif)
 
@@ -39,6 +41,11 @@ pip install -r requirements.txt
 
 5 . Download all the checkpoints
 [Download link](https://drive.google.com/drive/folders/1FPlE1ui2jqjOcaflBZ-9K11YBV_1mD_f?usp=sharing)
+
+```bash
+mkdir checkpoints
+mkdir backbones
+```
 
 (a) Download URDFormer checkpoints for both global scenes and parts (`global.pth`, `part.pth`), and place them under `checkpoints`
 
