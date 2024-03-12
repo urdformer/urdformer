@@ -41,6 +41,19 @@ pip install -r requirements.txt
 (b) Download Finetuned GroudingDINO models (`kitchen_souped.pth` and `object_souped.pth`) with modelsoup method for object-level and scene-level, and place them
 under `grounding_dino`
 
+After this step, your folder will look like:
+```bash
+urdformer/
+├── backbones/
+│   ├── mae_pretrain_hoi_vit_small.pth
+├── checkpoints/
+│   ├── global.pth
+│   └── part.pth
+├── groundingdino/
+│   ├── kitchen_souped.pth
+│   └── object_souped.pth
+...
+```
 6 . Install packages required for running GroundingDINO
 ```bash
 pip install -U openmim
