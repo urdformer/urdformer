@@ -86,7 +86,7 @@ python demo.py --scene_type object --texture
 ```
 
 ## Details
-Put all your images under `images`, and the default urdf predictions are saved under `output`.
+Put all your images under `images`, and the urdf predictions by default will be saved under `output`.
 To run URDFormer for your image, there are 3 steps: (1) getting bounding boxes for objects and parts (2) Get textures (optional) (3) get URDF prediction. 
 
 1 . First step for URDFormer is getting reliable bounding boxes for parts and objects. To do this, we provide finetuned GroundingDINO weights with model soup approach, 
