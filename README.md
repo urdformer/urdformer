@@ -1,6 +1,6 @@
 # URDFormer
 
-[**URDFormer: A Pipeline for Constructing Articulated Simulation Environments from Real-World Images**](https://arxiv.org/abs/TODO)  
+[**URDFormer: A Pipeline for Constructing Articulated Simulation Environments from Real-World Images**](https://drive.google.com/file/d/1vXcBgf--ySQWeh3VFIiigAV8_cZi_Kzv/view?usp=sharing)  
 [Zoey Chen](https://qiuyuchen14.github.io/), [Aaron Walsman](https://aaronwalsman.com/), 
 [Marius Memmel](https://memmelma.github.io/), [Kaichun Mo](https://kaichun-mo.github.io/),
 [Alex Fang](https://scholar.google.com/citations?user=kD9uKC4AAAAJ&hl=en), 
@@ -8,7 +8,7 @@
 [Alan Wu](https://www.linkedin.com/in/alan-wu-501a93202/),
 [Dieter Fox*](https://homes.cs.washington.edu/~fox/),  [Abhishek Gupta*](https://abhishekunique.github.io/) 
 
-[website](https://urdformer.github.io/), paper (coming sooon)
+[website](https://urdformer.github.io/), [paper] (https://drive.google.com/file/d/1vXcBgf--ySQWeh3VFIiigAV8_cZi_Kzv/view?usp=sharing)
 
 
 URDFormer a scalable pipeline towards large-scale simulation generation from real-world images. Given an image (internet or captured from a phone),
@@ -39,9 +39,12 @@ pip install -r requirements.txt
 
 5 . Download all the checkpoints
 [Download link](https://drive.google.com/drive/folders/1FPlE1ui2jqjOcaflBZ-9K11YBV_1mD_f?usp=sharing)
+
 (a) Download URDFormer checkpoints for both global scenes and parts (`global.pth`, `part.pth`), and place them under `checkpoints`
+
 (b) Download backbone checkpoint (`mae_pretrain_hoi_vit_small.pth`) and place it under `backbones`
-(b) Download Finetuned GroudingDINO models (`kitchen_souped.pth` and `object_souped.pth`) with modelsoup method for object-level and scene-level, and place them
+
+(c) Download Finetuned GroudingDINO models (`kitchen_souped.pth` and `object_souped.pth`) with modelsoup method for object-level and scene-level, and place them
 under `grounding_dino`
 
 After this step, your folder will look like:
