@@ -1,0 +1,125 @@
+# URDFormer
+
+[**URDFormer: A Pipeline for Constructing Articulated Simulation Environments from Real-World Images**](https://arxiv.org/abs/TODO)  
+[Zoey Chen](https://qiuyuchen14.github.io/), [Aaron Walsman](https://aaronwalsman.com/), 
+[Marius Memmel](https://memmelma.github.io/), [Kaichun Mo](https://kaichun-mo.github.io/),
+[Alex Fang](https://scholar.google.com/citations?user=kD9uKC4AAAAJ&hl=en), 
+[Karthikeya Vemuri](https://www.linkedin.com/in/karthikeya-vemuri/),
+[Alan Wu](https://www.linkedin.com/in/alan-wu-501a93202/),
+[Dieter Fox*](https://homes.cs.washington.edu/~fox/),  [Abhishek Gupta*](https://abhishekunique.github.io/) 
+
+URDFormer a scalable pipeline towards large-scale simulation generation from real-world images. Given an image (internet or captured from a phone),
+URDFormer predicts its corresponding interactive "digital twin" in the format of a URDF. This URDF can be loaded into a simulator to train a robot for different tasks.
+Please check out our [website](https://urdformer.github.io/) for more details and visualizations. 
+
+![](media/teaser_final.gif)
+
+## Installation
+
+1 . Clone URDFormer repo:
+```bash
+git clone https://github.com/urdformer/urdformer.git
+cd urdformer
+```
+2 . Create an new environment (we only tested URDFormer with python 3.9)
+```bash
+conda create -n urdformer python=3.9
+conda activate urdformer
+```
+
+3 . Install all the required packages:
+```bash
+pip install -r requirements.txt
+```
+
+4 . Install pytorch version based on your cuda version. We only tested URDFormer on torch==1.12.1+cu113. 
+
+5 . Download all the checkpoints
+
+(a) Download URDFormer checkpoints for both global scenes and parts (global.pth, part.pth), and place them under /checkpoints
+
+(b) Download Finetuned GroudingDINO models (kitchen_souped.pth and object_souped.pth) with modelsoup method for object-level and scene-level, and place them
+under /grounding_dino
+
+6 . Install packages required for running GroundingDINO
+```bash
+pip install -U openmim
+mim install mmengine
+mim install "mmcv>=2.0.0"
+
+cd grounding_dino
+pip install -v -e .
+cd ..
+```
+
+## Quickstart
+To run the demo for URDFormer, there are 3 steps: (1) getting bounding boxes for objects and parts (2) Get textures (optional) (3) get URDF prediction. 
+
+1 . First step for URDFormer is getting reliable bounding boxes for parts and objects. To do this, we provide finetuned GroundingDINO weights with model soup approach, 
+followed by an interactive GUI for user to further refine the boxes. Usually the prediction works fairly well for single object such as cabinets, but requries 
+further refinements for global scenes. 
+```bash
+python get_bbox.py --scene_type cabinet
+```
+Note that specifying names such as "cabinet" or "washer" under `--scene_type` is only for better prompting used for GroundingDINO. You can also choose to use "object" if you have a mixed set of object images. URDFormer is only trained on 5 categories of 
+objects: "cabinet", "oven", "dishwasher", "fridge" and "washer" (see `groundingdino/detection.py`), and one type of global scene "kitchen". Please use "--scene_type kitchen" when working with global scene
+prediction. All the predicted bboxes are saved in `groundingdino/labels`. We also have a further postprocessing step to remove duplicated boxes and save filtered results in `groundingdino/labels_filtered`
+
+The GUI interface is pretty straightforward, the image is first initialized with predicted boxes from GroundingDINO, you can right click to select boxes, and choose from `delete` (remove all the selected boxes)
+or combine (combine all the selected boxes). You can simply click and drag to add boxes. When you are ready, click `confirm`. All the boxes will be saved into `groundingdino/labels_manual`. 
+![](media/GUI.gif)
+
+2 . [Optional] Second step is to get textures. We simply crop the original image using the bbox obtained in step 1. This step leverages stable diffusion for better/diverse textures such as removing handles. We import these images into a texture UV map template,
+```bash
+python get_texture.py
+```
+Note that this step will take about 1min per object depending on numbers of parts the object has. Alternatively, you can skip this step if you only want to generate URDFs. 
+
+3 . URDFormer. 
+For single object prediction, run:
+```bash
+python demo.py --scene_type object --texture
+```
+If you have skipped step 2, you can simply remove `--texture`. 
+
+For kitchen prediction, run:
+```bash
+python demo.py --scene_type kitchen --texture
+```
+You will see animated visualization in the pybullet GUI window (press `G` for better visualization). 
+![](media/urdformer_example.gif)
+
+For mesh randomization, you can add `--random`
+
+```bash
+python demo.py --scene_type object --texture --random
+```
+
+All URDF results are saved under `output`. We provide basic script for sanity check:
+```bash
+python urdf_test.py --name label3.urdf
+```
+change `label3.urdf` to your urdf filename that you want to visualize. 
+
+
+
+## Training
+
+Details on how to generate data and train URDFormer are coming soon!
+
+
+## Citations
+**URDFormer**
+```bibtex
+@article{chen2024urdformer,
+  title={ },
+  author={ },
+  journal= {},
+  year={2024}
+}
+```
+
+
+## Questions or Issues?
+
+Please file an issue with the issue tracker.  
