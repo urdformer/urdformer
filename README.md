@@ -16,7 +16,7 @@ Please check out our [website](https://urdformer.github.io/) for more details an
 
 ## Installation
 
-1 . Clone URDFormer repo:
+1 . Clone URDFormer repo (this might take a few minutes):
 ```bash
 git clone https://github.com/urdformer/urdformer.git
 cd urdformer
@@ -35,11 +35,11 @@ pip install -r requirements.txt
 4 . Install pytorch version based on your cuda version. We only tested URDFormer on torch==1.12.1+cu113. 
 
 5 . Download all the checkpoints
-
-(a) Download URDFormer checkpoints for both global scenes and parts (global.pth, part.pth), and place them under /checkpoints
-
-(b) Download Finetuned GroudingDINO models (kitchen_souped.pth and object_souped.pth) with modelsoup method for object-level and scene-level, and place them
-under /grounding_dino
+[Download link](https://drive.google.com/drive/folders/1FPlE1ui2jqjOcaflBZ-9K11YBV_1mD_f?usp=sharing)
+(a) Download URDFormer checkpoints for both global scenes and parts (`global.pth`, `part.pth`), and place them under `checkpoints`
+(b) Download backbone checkpoint (`mae_pretrain_hoi_vit_small.pth`) and place it under `backbones`
+(b) Download Finetuned GroudingDINO models (`kitchen_souped.pth` and `object_souped.pth`) with modelsoup method for object-level and scene-level, and place them
+under `grounding_dino`
 
 6 . Install packages required for running GroundingDINO
 ```bash
@@ -53,7 +53,15 @@ cd ..
 ```
 
 ## Quickstart
-To run the demo for URDFormer, there are 3 steps: (1) getting bounding boxes for objects and parts (2) Get textures (optional) (3) get URDF prediction. 
+ 
+If you just want to visualize examples we provide, simply run:
+```bash
+python demo.py --scene_type object --texture
+```
+
+## Details
+Put all your images under `images`, and the default urdf predictions are saved under `output`.
+To run URDFormer for your image, there are 3 steps: (1) getting bounding boxes for objects and parts (2) Get textures (optional) (3) get URDF prediction. 
 
 1 . First step for URDFormer is getting reliable bounding boxes for parts and objects. To do this, we provide finetuned GroundingDINO weights with model soup approach, 
 followed by an interactive GUI for user to further refine the boxes. Usually the prediction works fairly well for single object such as cabinets, but requries 

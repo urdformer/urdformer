@@ -292,7 +292,7 @@ def load_kitchen_texture(image, test_name, object_id, bboxes):
         inpaint_mask = PIL.Image.fromarray(cv2.resize(inpaint_mask, (512, 512), interpolation=cv2.INTER_NEAREST))
 
         # impaint the texture
-        inpaint_img = upscale([inpaint_img])[0].resize((512, 512))
+        # inpaint_img = upscale([inpaint_img])[0].resize((512, 512))
         new_image = in_paint_pipe(prompt="panel texture, original color, smooth texture, Intricately Detailed, 16k, natural lighting, Best Quality, Masterpiece, photorealistic", image=inpaint_img, mask_image=inpaint_mask).images[0]
 
         if not is_small(each_bbox, 10): # use the drawer color to be the base
