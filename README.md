@@ -110,7 +110,7 @@ python demo.py --scene_type kitchen --texture
 You will see animated visualization in the pybullet GUI window (press `G` for better visualization). 
 ![](media/urdformer_example.gif)
 
-For mesh randomization, you can add `--random`
+For mesh randomization, you can add `--random`, we currently only support randomization on cabinet objects.
 
 ```bash
 python demo.py --scene_type object --texture --random
