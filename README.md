@@ -8,6 +8,9 @@
 [Alan Wu](https://www.linkedin.com/in/alan-wu-501a93202/),
 [Dieter Fox*](https://homes.cs.washington.edu/~fox/),  [Abhishek Gupta*](https://abhishekunique.github.io/) 
 
+[website](https://urdformer.github.io/), paper (coming sooon)
+
+
 URDFormer a scalable pipeline towards large-scale simulation generation from real-world images. Given an image (internet or captured from a phone),
 URDFormer predicts its corresponding interactive "digital twin" in the format of a URDF. This URDF can be loaded into a simulator to train a robot for different tasks.
 Please check out our [website](https://urdformer.github.io/) for more details and visualizations. 
