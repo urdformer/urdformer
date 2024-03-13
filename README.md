@@ -88,6 +88,8 @@ If you are running this the first time, this might take a few minutes to downloa
 ## Details
 Put all your images under `images`, and the urdf predictions by default will be saved under `output`. URDFormer is only trained on 5 categories of 
 objects: "cabinet", "oven", "dishwasher", "fridge" and "washer" (see `groundingdino/detection.py`), and one type of global scene "kitchen". 
+Disclaimer: URDFormer was trained on dataset of objects with handles, so it works better on kitchens when handles on the cabinets are visible.
+
 
 To run URDFormer for your image, there are 3 steps: (1) getting bounding boxes for objects and parts (2) Get textures (optional) (3) get URDF prediction. 
 
@@ -104,6 +106,10 @@ The GUI interface is pretty straightforward, the image is first initialized with
 or combine (combine all the selected boxes). You can simply click and drag to add boxes. When you are ready, click `confirm`. All the boxes will be saved into `groundingdino/labels_manual`. 
 Note: Valid boxes are "drawer, door, handle, knob" for cabinets, and "door, drawer, handle" for dishwasher, oven, fridge and "door" for washer. Currently URDFormer doesn't support "oven knob".
 ![](media/GUI.gif)
+
+Tips on GUI: For object-level boxes, we only care about part boxes such as `drawer` or `handle`, so please remove boxes on the entire object. For kitchen images, you first need to label boxes on objects only, after confirming the object boxes, it will go
+into each box and ask GroundingDINO or user for part boxes. For kitchen images, it's better to keep object boxes simple (group 2-3 doors together) for global URDFormer, and leave more complex part reasoning for part URDFormer.
+
 
 2 . [Optional] Second step is to get textures. We simply crop the original image using the bbox obtained in step 1. This step leverages stable diffusion for better/diverse textures such as removing handles. We import these images into a texture UV map template,
 ```bash
