@@ -385,10 +385,14 @@ def visualization_parts(p, root_position, root_orientation, root_scale, mesh_bas
 
     part_names = ['none', 'drawer', 'doorL', 'doorR',
                   'handle', 'knob', 'washer_door', 'doorD', 'oven_door', 'doorU']
-    base_names = ['none', 'cabinet_kitchen', 'oven', 'dishwasher', 'cabinet_kitchen', 'fridge',
+    base_names = ['none', 'cabinet_kitchen', 'oven', 'dishwasher', 'washer', 'fridge',
                   'oven_fan', 'shelf_base'
                   ]
     part_path = "meshes/parts/"
+
+    # fix the oven fan problem: if there are parts, root shouldn't be oven fan
+    if len(position_pred_ori) > 0 and mesh_base == 6:
+        mesh_base = 1
 
     root = "meshes/{}.obj".format(base_names[mesh_base])
 
@@ -403,6 +407,12 @@ def visualization_parts(p, root_position, root_orientation, root_scale, mesh_bas
 
     parent_pred = []
     relations_pred = []
+
+
+
+
+
+
     if mesh_base >=9: # rigid objects
         object_path = "meshes/{}.obj".format(base_names[mesh_base])
         obj = create_obj(p, object_path, root_scale, root_position, root_orientation)
@@ -675,6 +685,9 @@ def write_urdfs(filename, root, root_scale, root_position, root_orientation, lin
             limitL = -1.57
             limitU = 0
         elif "doorU" in os.path.basename(link_info)[:-4]:
+            limitL = 0
+            limitU = 1.57
+        else:
             limitL = 0
             limitU = 1.57
 
