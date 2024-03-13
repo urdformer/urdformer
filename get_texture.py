@@ -251,7 +251,7 @@ def get_texture(scene):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument('-scene', '--scene', default='cabinet', type=str)
+    parser.add_argument('-scene', '--scene', default='object', type=str)
     args = parser.parse_args()
 
     get_texture(args.scene)
