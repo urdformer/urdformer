@@ -232,7 +232,7 @@ def evaluate(args, detection_args):
         # run detection module again for each cropped images to get part bboxes
         detection_args['out_dir'] = "grounding_dino/labels_manual/parts/labels"
         detection_args['inputs'] = "grounding_dino/labels_manual/parts/images"
-        detector('object', args.object_type, detection_args)
+        detector(args.scene_type, detection_args)
         #
         # # run postprocessing
         part_label_dir = 'grounding_dino/labels_manual/parts/labels'

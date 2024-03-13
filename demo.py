@@ -542,6 +542,9 @@ def object_prediction(img_path, label_final_dir, urdformer_part, device, with_te
     root_position = [0, 0, 0]
     root_orientation = [0, 0, 0, 1]
     root_scale = [1, 1, 1]
+    if base_pred[0] == 5:
+        root_scale[2]*=2
+
     scale_pred_part[:, 2] *= root_scale[2]
 
     ##################################################
@@ -565,6 +568,7 @@ def object_prediction(img_path, label_final_dir, urdformer_part, device, with_te
                 texture_list.append(f"textures/{test_name}/{bbox_id}.png")
             else:
                 print('no texture map found! Run get_texture.py first')
+
 
     object_id, link_orientations = visualization_parts(p, root_position, root_orientation, root_scale, base_pred[0],
                                                        position_pred_part, scale_pred_part, mesh_pred_part,
