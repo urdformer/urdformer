@@ -500,7 +500,7 @@ class DetInferencer(BaseInferencer):
 
             pred_instances = pred.pred_instances
             pred_instances = pred_instances[pred_instances.scores > 0.30]
-            tp, fp, fn = self.compute_TPFP(img_name,  img.shape, pred_instances['bboxes'])
+            # tp, fp, fn = self.compute_TPFP(img_name,  img.shape, pred_instances['bboxes'])
             all_boxes.append(pred_instances['bboxes'].cpu().numpy())
 
         return  all_boxes
