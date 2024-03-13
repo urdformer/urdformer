@@ -208,13 +208,14 @@ def evaluate(args, detection_args):
         root.mainloop()
 
     if args.scene_type=="kitchen":
+        detection_args = detection_config(args)
         # # get the part detection
         os.makedirs(f"{manual_dir}/parts/images", exist_ok=True)
         os.makedirs(f"{manual_dir}/parts/labels", exist_ok=True)
         os.makedirs(f"{manual_dir}/parts/labels_filtered", exist_ok=True)
+        os.makedirs(f"{manual_dir}/parts/labels_manual", exist_ok=True)
         for each_img_path in glob.glob('images/*'):
             label_name = os.path.basename(each_img_path)[:-4]
-            # os.makedirs(f"{manual_dir}/parts/{label_name}", exist_ok=True)
             each_global_label = f"grounding_dino/labels_manual/{label_name}.npy"
             global_data = np.load(each_global_label, allow_pickle=True).item()
             all_bboxes = global_data['part_normalized_bbox']
@@ -232,7 +233,7 @@ def evaluate(args, detection_args):
         # run detection module again for each cropped images to get part bboxes
         detection_args['out_dir'] = "grounding_dino/labels_manual/parts/labels"
         detection_args['inputs'] = "grounding_dino/labels_manual/parts/images"
-        detector(args.scene_type, detection_args)
+        detector('object', detection_args)
         #
         # # run postprocessing
         part_label_dir = 'grounding_dino/labels_manual/parts/labels'
