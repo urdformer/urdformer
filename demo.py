@@ -432,7 +432,7 @@ def kitchen_prediction(img_path, global_label_path, urdformer_global, urdformer_
             cropped_image = image_global[bounding_box[0]:bounding_box[2], bounding_box[1]:bounding_box[3]]
 
             image_tensor_part, bbox_part, masks_part, tgt_padding_mask_part, tgt_padding_relation_mask_part = evaluate_parts_with_masks(
-                global_label_path, cropped_image, mesh_id)
+                global_label_path, cropped_image)
 
             # get texture list for each part
             bbox_part_new = bbox_part[0][torch.logical_not(tgt_padding_mask_part).numpy()]
