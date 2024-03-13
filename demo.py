@@ -481,7 +481,7 @@ def kitchen_prediction(img_path, global_label_path, urdformer_global, urdformer_
             object_id, link_orientations = visualization_parts(p, root_position, root_orientation, root_scale, base_pred[0], position_pred_part,
                                 scale_pred_part, mesh_pred_part, parent_pred_part, texture_list, if_random, filename=f"output/{test_name}_{mesh_id}")
             all_link_orientations.append(link_orientations)
-    base_path = "/home/zoeyc/github/reality_gym/assets/layout"
+    base_path = "meshes/layout"
     root_paths = ["floor", "ceiling", "front_wall", "left_wall", "right_wall"]
     for root in root_paths:
         position = [0, 0, 0]
@@ -491,7 +491,7 @@ def kitchen_prediction(img_path, global_label_path, urdformer_global, urdformer_
         layout = create_obj(p, base_path + "/" + str(root) + ".obj", [1, 1, 1], position, orientation)
         # p.changeVisualShape(layout, -1, rgbaColor=(
         # np.random.uniform(0.7, 0.8), np.random.uniform(0.7, 0.8), np.random.uniform(0.7, 0.8), 1))
-        base_texture = "/home/zoeyc/github/reality_gym/assets/textures/ceiling_texture/texture.png"
+        base_texture = "default_textures/ceiling_texture/texture.png"
         base_tex = p.loadTexture(base_texture)
         p.changeVisualShape(layout, -1, rgbaColor=(1, 1, 1, 1), textureUniqueId=base_tex)
 
@@ -576,7 +576,7 @@ def object_prediction(img_path, label_final_dir, urdformer_part, device, with_te
 
     root = "meshes/cabinet.obj"
 
-    time.sleep(5)
+    time.sleep(1)
 
 def evaluate(args, with_texture=False):
     device = "cuda"
