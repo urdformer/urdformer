@@ -116,7 +116,7 @@ into each box and ask GroundingDINO or user for part boxes. For kitchen images, 
 python get_texture.py --scene object
 ```
 Please use `--scene kitchen` when doing kitchen images.
-Note that this step will take about 1min per object depending on numbers of parts the object has. Alternatively, you can skip this step if you only want to generate URDFs. 
+Note that this step will take about a few second to 1min per object depending on numbers of parts the object has. Alternatively, you can skip this step if you only want to generate URDFs. 
 By default, the texture for inside the drawer is black, but you can change it to any
 3 . Last step is the URDF prediction.
 For single object prediction, run:
