@@ -124,7 +124,7 @@ def detection_config(args):
     detection_args['print_result'] = False
     detection_args['palette'] = 'none'
     detection_args['custom_entities'] = False
-    detection_args['out_dir'] = 'grounding_dino/output'
+    detection_args['out_dir'] = 'grounding_dino/labels'
 
     return detection_args
 
