@@ -1,3 +1,4 @@
 .idea/
 __pycache_/
 grounding_dino/__pycache_/
+grounding_dino/mmdet/__pycache_/
