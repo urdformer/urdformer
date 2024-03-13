@@ -13,4 +13,5 @@ realesrgan==0.3.0
 transformers== 4.28.0
 fairscale==0.4.13
 nltk==3.8.1
+chardet
 accelerate

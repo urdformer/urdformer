@@ -314,39 +314,6 @@ def kitchen_prediction(img_path, global_label_path, urdformer_global, urdformer_
     num_roots_global = 5
     image_global = np.array(Image.open(img_path).convert("RGB"))
 
-    ############################################### detection visualization ##################################
-    image = image_global
-    # gt_data_path = global_label_path
-    # gt_data = np.load(gt_data_path, allow_pickle=True).item()
-    # for boxid, each_bbox in enumerate(gt_data['normalized_bbox']):
-    #     bounding_box = [int(each_bbox[0] * image.shape[0]),
-    #                     int(each_bbox[1] * image.shape[1]),
-    #                     int((each_bbox[0] + each_bbox[2]) * image.shape[0]),
-    #                     int((each_bbox[1] + each_bbox[3]) * image.shape[1]),
-    #                     ]
-    #
-    #     image = cv2.rectangle(image, (bounding_box[1], bounding_box[0]), (bounding_box[3], bounding_box[2]),
-    #                           (0, 0, 255), 8)
-    #
-    # detection_path = global_label_path
-    # detection_data = np.load(detection_path, allow_pickle=True).item()
-    #
-    # for boxid, each_bbox in enumerate(detection_data['global_normalized_bbox']):
-    #     bounding_box = [int(each_bbox[0] * image.shape[0]),
-    #                     int(each_bbox[1] * image.shape[1]),
-    #                     int((each_bbox[0] + each_bbox[2]) * image.shape[0]),
-    #                     int((each_bbox[1] + each_bbox[3]) * image.shape[1]),
-    #                     ]
-    #
-    #     image = cv2.rectangle(image, (bounding_box[1], bounding_box[0]), (bounding_box[3], bounding_box[2]),
-    #                           (255, 0, 0), 6)
-    #
-    # path_name = "/home/zoeyc/github/reality_gym/RSS/paper/figures/detector_vs_gt/kitchen/2d_bbox"
-    # os.makedirs(path_name, exist_ok=True)
-    # PIL.Image.fromarray(image).show()#.save("/home/zoeyc/github/reality_gym/RSS/paper/figures/detector_vs_gt/kitchen/2d_bbox/{0}.png".format(test_id))
-    # breakpoint()
-
-
     #############################################################################################################################
     test_name = os.path.basename(img_path)[:-4]
 
@@ -391,9 +358,6 @@ def kitchen_prediction(img_path, global_label_path, urdformer_global, urdformer_
                         int((bbox[0][mesh_id][1] + bbox[0][mesh_id][3]) * image_global.shape[1]),
                         ]
         cropped_image = image_global[bounding_box[0]:bounding_box[2], bounding_box[1]:bounding_box[3]]
-
-        # image_tensor_part, gt_base_part, bbox_part, masks_part, tgt_padding_mask_part, tgt_padding_relation_mask_part = evaluate_kitchen_parts_with_masks(data_path, cropped_image, num_roots_part, mesh_id)
-
         image_tensor_part, bbox_part, masks_part, tgt_padding_mask_part, tgt_padding_relation_mask_part = evaluate_kitchen_parts_with_masks(
             global_label_path, cropped_image, mesh_id)
 

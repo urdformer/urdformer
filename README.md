@@ -41,7 +41,7 @@ pip install -r requirements.txt
 
 5 . Download all the checkpoints
 [Download link](https://drive.google.com/drive/folders/1FPlE1ui2jqjOcaflBZ-9K11YBV_1mD_f?usp=sharing)
-
+First create two folders to save pretrained models:
 ```bash
 mkdir checkpoints
 mkdir backbones
