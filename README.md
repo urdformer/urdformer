@@ -84,19 +84,20 @@ If you just want to visualize examples we provide, simply run:
 ```bash
 python demo.py --scene_type object --texture
 ```
-
+If you are running this the first time, this might take a few minutes to download pretrained weights.
 ## Details
-Put all your images under `images`, and the urdf predictions by default will be saved under `output`.
+Put all your images under `images`, and the urdf predictions by default will be saved under `output`. URDFormer is only trained on 5 categories of 
+objects: "cabinet", "oven", "dishwasher", "fridge" and "washer" (see `groundingdino/detection.py`), and one type of global scene "kitchen". 
+
 To run URDFormer for your image, there are 3 steps: (1) getting bounding boxes for objects and parts (2) Get textures (optional) (3) get URDF prediction. 
 
 1 . First step for URDFormer is getting reliable bounding boxes for parts and objects. To do this, we provide finetuned GroundingDINO weights with model soup approach, 
 followed by an interactive GUI for user to further refine the boxes. Usually the prediction works fairly well for single object such as cabinets, but requries 
 further refinements for global scenes. 
 ```bash
-python get_bbox.py --scene_type cabinet
+python get_bbox.py --scene_type object
 ```
-Note that specifying names such as "cabinet" or "washer" under `--scene_type` is only for better prompting used for GroundingDINO. You can also choose to use "object" if you have a mixed set of object images. URDFormer is only trained on 5 categories of 
-objects: "cabinet", "oven", "dishwasher", "fridge" and "washer" (see `groundingdino/detection.py`), and one type of global scene "kitchen". Please use "--scene_type kitchen" when working with global scene
+Note that you can also specify names such as "cabinet" or "washer" under `--scene_type` for better prompting used for GroundingDINO. Please use "--scene_type kitchen" when working with global scene
 prediction. All the predicted bboxes are saved in `groundingdino/labels`. We also have a further postprocessing step to remove duplicated boxes and save filtered results in `groundingdino/labels_filtered`
 
 The GUI interface is pretty straightforward, the image is first initialized with predicted boxes from GroundingDINO, you can right click to select boxes, and choose from `delete` (remove all the selected boxes)
