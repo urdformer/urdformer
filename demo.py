@@ -513,9 +513,12 @@ def kitchen_prediction(img_path, global_label_path, urdformer_global, urdformer_
                     else:
                         jointpos = np.random.uniform(-0.7, -0.25)
                     p.resetJointState(obj, jid, jointpos)
-
+            time.sleep(0.2)
         # rgb = get_kitchen_image()
         # PIL.Image.fromarray(rgb).save(f"{save_name}/{i}.png")
+    print("press enter to quit")
+    input() # make a pause
+
 
 
 def object_prediction(img_path, label_final_dir, urdformer_part, device, with_texture, if_random
