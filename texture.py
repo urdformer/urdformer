@@ -405,7 +405,7 @@ def load_texture(img_path, label_path, if_random=False):
         inpaint_mask = PIL.Image.fromarray(cv2.resize(inpaint_mask, (512, 512), interpolation=cv2.INTER_NEAREST))
 
         # impaint the texture
-        inpaint_img = upscale([inpaint_img])[0].resize((512, 512))
+        # inpaint_img = upscale([inpaint_img])[0].resize((512, 512))
         text_promt = random.choice(['bright light', 'natural light', 'ultra smooth', 'good quality wood', 'nice pattern', 'wooden pattern'])
         new_image = in_paint_pipe(prompt="just pure flat wood panel, smooth texture, Intricately Detailed, 16k, natural lighting, Best Quality, Masterpiece, photorealistic", image=inpaint_img, mask_image=inpaint_mask).images[0]
         if if_random:
