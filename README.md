@@ -62,7 +62,7 @@ urdformer/
 ├── checkpoints/
 │   ├── global.pth
 │   └── part.pth
-├── groundingdino/
+├── grounding_dino/
 │   ├── kitchen_souped.pth
 │   └── object_souped.pth
 ...
