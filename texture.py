@@ -337,7 +337,7 @@ def load_texture(img_path, label_path, if_random=False):
     os.makedirs(texture_path+'/{0}'.format(test_name), exist_ok=True)
 
     # create folder for the texture
-    side_texture = f"{texture_path}/inside.jpg"
+    side_texture = "default_textures/inside.jpg"
     side_image = cv2.imread(side_texture)
     texture_list = []
 
