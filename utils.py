@@ -671,6 +671,9 @@ def write_urdfs(filename, root, root_scale, root_position, root_orientation, lin
     # Loop over links and create URDF elements for each
     link_names = ['base_link']
     for link_id, link_info in enumerate(links):
+        link_names.append(os.path.basename(link_info)[:-4] + "{}".format(link_id))
+
+    for link_id, link_info in enumerate(links):
         link_rot = Rot.from_quat(link_orientations[link_id]).as_rotvec()
         if "drawer" in os.path.basename(link_info)[:-4]:
             limitL = 0
@@ -692,7 +695,7 @@ def write_urdfs(filename, root, root_scale, root_position, root_orientation, lin
             limitU = 1.57
 
         # Add a link element for each link
-        link_names.append(os.path.basename(link_info)[:-4]+"{}".format(link_id))
+        # link_names.append(os.path.basename(link_info)[:-4]+"{}".format(link_id))
         link = ET.SubElement(robot, 'link', attrib={'name': os.path.basename(link_info)[:-4]+"{}".format(link_id)})
         visual = ET.SubElement(link, 'visual')
         ET.SubElement(visual, 'origin', attrib={'xyz': '0 0 0', 'rpy': '0 0 0'})
