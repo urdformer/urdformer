@@ -93,7 +93,7 @@ def create_articulated_objects(root, root_scale, root_position, root_orientation
         p.changeVisualShape(obj, -1, rgbaColor=color)
     if len(texture_list) > 0:
         if "meshes/oven.obj" in root:
-            base_texture = "textures/inside.jpg"
+            base_texture = "default_textures/inside.jpg"
         else:
             base_texture = os.path.dirname(texture_list[0]) + "/base.png"
 
@@ -394,6 +394,7 @@ def visualization_parts(p, root_position, root_orientation, root_scale, mesh_bas
     if len(position_pred_ori) > 0 and mesh_base == 6:
         mesh_base = 1
 
+
     root = "meshes/{}.obj".format(base_names[mesh_base])
 
     position_type = np.arange(13)/12
@@ -616,7 +617,6 @@ def write_numpy(filename, root, root_scale, root_position, root_orientation, lin
 
     urdf_primitives = {}
     urdf_primitives['root'] = root
-    urdf_primitives['root_scale'] = root_scale
     urdf_primitives['root_scale'] = root_scale
     urdf_primitives['root_position'] = root_position
     urdf_primitives['root_orientation'] = root_orientation
