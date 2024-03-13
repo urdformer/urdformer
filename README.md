@@ -102,6 +102,7 @@ prediction. All the predicted bboxes are saved in `groundingdino/labels`. We als
 
 The GUI interface is pretty straightforward, the image is first initialized with predicted boxes from GroundingDINO, you can right click to select boxes, and choose from `delete` (remove all the selected boxes)
 or combine (combine all the selected boxes). You can simply click and drag to add boxes. When you are ready, click `confirm`. All the boxes will be saved into `groundingdino/labels_manual`. 
+Note: Valid boxes are "drawer, door, handle, knob" for cabinets, and "door, drawer, handle" for dishwasher, oven, fridge and "door" for washer. Currently URDFormer doesn't support "oven knob".
 ![](media/GUI.gif)
 
 2 . [Optional] Second step is to get textures. We simply crop the original image using the bbox obtained in step 1. This step leverages stable diffusion for better/diverse textures such as removing handles. We import these images into a texture UV map template,
