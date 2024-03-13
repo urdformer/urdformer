@@ -109,7 +109,7 @@ python get_texture.py
 ```
 Note that this step will take about 1min per object depending on numbers of parts the object has. Alternatively, you can skip this step if you only want to generate URDFs. 
 
-3 . URDFormer. 
+3 . Last step is the URDF prediction.
 For single object prediction, run:
 ```bash
 python demo.py --scene_type object --texture
