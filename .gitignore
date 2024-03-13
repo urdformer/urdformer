@@ -2,3 +2,4 @@
 __pycache_/
 grounding_dino/__pycache_/
 grounding_dino/mmdet/__pycache_/
+grounding_dino/mmdet/apis/__pycache_/
